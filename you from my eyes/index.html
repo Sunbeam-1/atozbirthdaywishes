@@ -3,20 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>my xoxoxo</title>
+  <title>My Cookiee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Pacifico&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --pink: #ff6f9d;
       --hot-pink: #f45183;
       --blush: #fff0f5;
       --cream: #fffaf5;
       --ink: #442d42;
-      --lavender: #e9ddff;
       --yellow: #ffe58a;
-      --line: rgba(68, 45, 66, .16);
       --shadow: 0 18px 50px rgba(176, 79, 120, .16);
     }
 
@@ -76,7 +73,12 @@
       position: relative;
     }
 
-    .hero-copy { padding: clamp(40px, 7vw, 84px) clamp(28px, 7vw, 82px); }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: clamp(40px, 7vw, 84px) clamp(28px, 7vw, 82px);
+    }
     .eyebrow {
       align-items: center;
       color: var(--hot-pink);
@@ -88,7 +90,7 @@
       margin-bottom: 22px;
       text-transform: uppercase;
     }
-    .eyebrow:before { content: "✿"; font-size: 17px; }
+    .eyebrow:before { content: "✿"; font-size: 19px; }
     h1 {
       font-size: clamp(50px, 7vw, 87px);
       letter-spacing: -.08em;
@@ -115,24 +117,33 @@
       line-height: 1.2;
       margin: 10px 0 0 9px;
     }
-    .intro {
-      font-size: 16px;
-      line-height: 1.7;
-      margin: 25px 0 28px;
-      max-width: 390px;
+    .actions {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 34px;
     }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
     button {
       border: 0;
       border-radius: 99px;
       cursor: pointer;
       font: 700 13px "Quicksand", sans-serif;
+      letter-spacing: .01em;
       padding: 14px 22px;
       transition: transform .2s ease, box-shadow .2s ease;
     }
     button:hover { transform: translateY(-3px) rotate(-1deg); }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 4px;
+    }
+    button:disabled { cursor: wait; opacity: .7; transform: none; }
     .primary { background: var(--hot-pink); box-shadow: 0 8px 20px rgba(244,81,131,.26); color: white; }
-    .secondary { background: var(--blush); color: var(--hot-pink); }
+    .primary:hover { box-shadow: 0 12px 25px rgba(244,81,131,.34); }
+    .secondary { background: var(--blush); border: 1px solid rgba(244,81,131,.2); color: var(--hot-pink); }
+    .secondary:hover { box-shadow: 0 8px 18px rgba(244,81,131,.12); }
 
     .hero-art {
       align-items: center;
@@ -187,7 +198,7 @@
     .camera-status { align-items: center; display: flex; font: 10px "DM Mono", monospace; gap: 6px; text-transform: uppercase; }
     .camera-status:before { background: var(--hot-pink); border-radius: 50%; content: ""; height: 7px; width: 7px; }
     .camera-status.live:before { background: #42b883; }
-    .camera-button { display: block; margin: 13px auto 0; padding: 11px 17px; }
+    .camera-button { display: block; margin: 18px auto 0; padding: 11px 17px; }
     .camera-doodle { color: var(--hot-pink); font-size: 26px; position: absolute; z-index: 3; }
     .camera-doodle.a { left: -24px; top: 21px; transform: rotate(-18deg); }
     .camera-doodle.b { right: -20px; top: 47px; color: #9276e9; transform: rotate(17deg); }
@@ -204,43 +215,7 @@
     .hero-art:before { transform: rotate(25deg) scaleX(.7); }
     .hero-art:after { transform: rotate(-25deg) scaleX(.7); }
 
-    .cat {
-      background: var(--cream);
-      border: 3px solid var(--ink);
-      border-radius: 48% 48% 43% 43%;
-      height: 205px;
-      position: relative;
-      width: 208px;
-      z-index: 2;
-      box-shadow: 9px 10px 0 rgba(68,45,66,.1);
-    }
-    .cat:before, .cat:after {
-      background: var(--cream);
-      border: 3px solid var(--ink);
-      content: "";
-      height: 67px;
-      position: absolute;
-      top: -30px;
-      width: 72px;
-      z-index: -1;
-    }
-    .cat:before { border-radius: 8px 48px 0 35px; left: 4px; transform: rotate(-20deg); }
-    .cat:after { border-radius: 48px 8px 35px 0; right: 4px; transform: rotate(20deg); }
-    .face { left: 0; position: absolute; top: 70px; width: 100%; }
-    .eyes { display: flex; justify-content: center; gap: 58px; }
-    .eyes i { background: var(--ink); border-radius: 50%; display: block; height: 12px; width: 9px; }
-    .nose { background: var(--yellow); border: 2px solid var(--ink); border-radius: 50%; height: 9px; margin: 15px auto 0; width: 11px; }
-    .whiskers { border-top: 2px solid var(--ink); height: 28px; margin: 0 auto; position: relative; width: 142px; }
-    .whiskers:before, .whiskers:after { border-top: 2px solid var(--ink); content:""; left: 0; position: absolute; top: 6px; transform: rotate(12deg); width: 33px; }
-    .whiskers:after { left: auto; right: 0; transform: rotate(-12deg); }
-    .bow { background: var(--hot-pink); border: 3px solid var(--ink); border-radius: 50% 45% 45% 50%; height: 45px; position: absolute; right: 0; top: -25px; transform: rotate(15deg); width: 48px; z-index: 3; }
-    .bow:before { background: var(--hot-pink); border: 3px solid var(--ink); border-radius: 45% 50% 50% 45%; content:""; height: 45px; left: -30px; position: absolute; top: 2px; width: 48px; }
-    .bow:after { background: var(--yellow); border: 2px solid var(--ink); border-radius: 50%; content:""; height: 16px; left: 5px; position: absolute; top: 12px; width: 16px; }
-
     .doodle { color: var(--hot-pink); font-size: 25px; position: absolute; z-index: 3; }
-    .doodle.one { left: 10%; top: 16%; transform: rotate(-15deg); }
-    .doodle.two { bottom: 13%; right: 11%; color: #9276e9; transform: rotate(14deg); }
-    .doodle.three { color: #dfa91d; font-size: 20px; right: 17%; top: 17%; }
 
     .note {
       background: var(--yellow);
@@ -271,18 +246,31 @@
       padding: 23px 26px;
     }
     .card-label { color: var(--hot-pink); font: 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
-    .thought { align-items: center; display: flex; gap: 16px; margin-top: 13px; }
+    .thought { align-items: center; display: flex; gap: 16px; margin-top: 17px; }
     .thought p { font-family: Pacifico, cursive; font-size: 22px; line-height: 1.35; margin: 0; }
     .mini-sun { align-items: center; background: var(--yellow); border: 2px solid var(--ink); border-radius: 50%; display: flex; flex: 0 0 48px; font-size: 23px; height: 48px; justify-content: center; transform: rotate(9deg); }
-    .polaroid { align-items: center; display: flex; justify-content: space-between; }
-    .polaroid strong { font-size: 17px; }
-    .polaroid small { display: block; font-size: 12px; margin-top: 4px; opacity: .65; }
-    .sticker { background: var(--lavender); border: 2px solid var(--ink); border-radius: 50%; font-size: 21px; padding: 13px; transform: rotate(10deg); }
-
+    .music-card { align-items: center; display: flex; gap: 18px; justify-content: space-between; min-height: 126px; }
+    .music-card strong { display: block; font-family: Pacifico, cursive; font-size: 19px; font-weight: 400; }
+    .music-card small { display: block; font-size: 12px; line-height: 1.4; margin-top: 5px; opacity: .7; }
+    .music-toggle { flex: 0 0 auto; position: relative; }
+    .music-toggle input { height: 1px; opacity: 0; position: absolute; width: 1px; }
+    .switch { background: rgba(68,45,66,.18); border: 2px solid var(--ink); border-radius: 99px; cursor: pointer; display: block; height: 32px; padding: 3px; transition: background .2s ease; width: 58px; }
+    .switch:before { background: white; border-radius: 50%; content: ""; display: block; height: 22px; transition: transform .2s ease; width: 22px; }
+    .music-toggle input:checked + .switch { background: var(--hot-pink); }
+    .music-toggle input:checked + .switch:before { transform: translateX(24px); }
+    .music-toggle input:focus-visible + .switch { outline: 3px solid var(--yellow); outline-offset: 4px; }
     .spark { animation: float 3s ease-in-out infinite; }
     @keyframes float { 50% { transform: translateY(-8px) rotate(5deg); } }
     .burst { animation: burst .7s ease-out forwards; }
     @keyframes burst { 0% { opacity: 1; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.5) translateY(-30px); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
     @media (max-width: 720px) {
       .page { width: min(100% - 24px, 540px); padding-top: 13px; }
       header { padding-bottom: 15px; }
@@ -290,7 +278,6 @@
       .hero { grid-template-columns: 1fr; }
       .hero-copy { padding: 45px 27px 32px; }
       .hero-art { min-height: 330px; }
-      .cat { transform: scale(.82); }
       .lower { grid-template-columns: 1fr; }
       h1 { font-size: 58px; }
     }
@@ -308,12 +295,11 @@
 
     <section class="hero" id="top">
       <div class="hero-copy">
-        <div class="eyebrow">a tiny love letter</div>
+        <div class="eyebrow">a tiny love </div>
         <h1>My<br><span>Cookiee</span><span class="see-you">this is how i see you ♡. .</span></h1>
-        <p class="intro"> .</p>
         <div class="actions">
-          <button class="primary" id="sparkleButton">send a sparkle ✦</button>
-          <button class="secondary" id="noteButton">open a note ♡</button>
+          <button class="primary" id="sparkleButton" type="button">send a sparkle ✦</button>
+          <button class="secondary" id="noteButton" type="button">open a note ♡</button>
         </div>
       </div>
       <div class="hero-art" aria-label="Live camera feed">
@@ -324,10 +310,10 @@
           <div class="camera-doodle d">♡</div>
           <div class="camera-doodle e">✿</div>
           <div class="camera-frame">
-            <video class="camera-video is-off" id="cameraVideo" autoplay playsinline muted></video>
+            <video class="camera-video is-off" id="cameraVideo" aria-label="Live camera preview" autoplay playsinline muted></video>
             <div class="camera-caption">
               <strong>hi, pretty ♡</strong>
-              <span class="camera-status" id="cameraStatus">camera off</span>
+              <span class="camera-status" id="cameraStatus" role="status" aria-live="polite">camera off</span>
             </div>
           </div>
           <div class="note" id="note">cutie alert!</div>
@@ -344,18 +330,78 @@
           <p>“I hope you know how wildly wonderful you are.”</p>
         </div>
       </article>
+      <article class="card music-card">
+        <div>
+          <div class="card-label">song</div>
+          <strong>press play, pretty ♡</strong>
+          <small id="musicStatus" role="status" aria-live="polite">Dariya.mp3</small>
+        </div>
+        <label class="music-toggle" aria-label="Play or pause our song">
+          <input id="musicToggle" type="checkbox" aria-label="Play or pause our song">
+          <span class="switch" aria-hidden="true"></span>
+        </label>
+      </article>
     </section>
+
+    <audio id="loveSong" loop preload="auto" playsinline aria-label="Background song">
+      <source src="Dariya.mp3" type="audio/mpeg">
+    </audio>
 
   </main>
   <script>
     const sparkleButton = document.querySelector("#sparkleButton");
     const art = document.querySelector(".hero-art");
     const noteButton = document.querySelector("#noteButton");
+    const note = document.querySelector("#note");
     const cameraButton = document.querySelector("#cameraButton");
     const cameraVideo = document.querySelector("#cameraVideo");
     const cameraStatus = document.querySelector("#cameraStatus");
+    const loveSong = document.querySelector("#loveSong");
+    const musicToggle = document.querySelector("#musicToggle");
+    const musicStatus = document.querySelector("#musicStatus");
     const notes = ["cutie alert!", "you are magic!", "big heart energy ♡" , "you are my sunshine ☀", "you are a star ✦", "you are loved!", "you are my favorite!", "you are the best!", "you are amazing!"];
     let noteIndex = 0;
+
+    const updateMusicState = (isPlaying) => {
+      musicToggle.checked = isPlaying;
+      musicStatus.textContent = isPlaying ? "playing now ♫" : "paused for the moment";
+    };
+
+    loveSong.addEventListener("error", () => {
+      updateMusicState(false);
+      musicStatus.textContent = "could not load Dariya.mp3";
+    });
+
+    const musicFile = fetch("Dariya.mp3")
+      .then((response) => {
+        if (!response.ok) throw new Error("Music file not found");
+        return response.blob();
+      })
+      .then((musicBlob) => {
+        loveSong.src = URL.createObjectURL(musicBlob);
+        loveSong.load();
+      });
+
+    const startMusic = () => {
+      musicFile.then(() => loveSong.play()).then(() => updateMusicState(true)).catch((error) => {
+        updateMusicState(false);
+        musicStatus.textContent = error.name === "NotAllowedError"
+          ? "tap the switch to start your song"
+          : "could not play Dariya.mp3";
+      });
+    };
+
+    musicToggle.addEventListener("change", () => {
+      if (musicToggle.checked) {
+        musicFile.then(() => loveSong.play()).then(() => updateMusicState(true)).catch(() => {
+          updateMusicState(false);
+          musicStatus.textContent = "could not play Dariya.mp3";
+        });
+      } else {
+        loveSong.pause();
+        updateMusicState(false);
+      }
+    });
 
     sparkleButton.addEventListener("click", () => {
       for (let i = 0; i < 9; i += 1) {
@@ -377,9 +423,13 @@
     });
 
     cameraButton.addEventListener("click", async () => {
+      cameraButton.disabled = true;
+      cameraButton.textContent = "asking for camera...";
+
       if (!navigator.mediaDevices?.getUserMedia) {
         cameraStatus.textContent = "camera unavailable";
         cameraButton.textContent = "camera not supported";
+        cameraButton.disabled = false;
         return;
       }
 
@@ -390,9 +440,10 @@
         cameraStatus.classList.add("live");
         cameraStatus.textContent = "live now";
         cameraButton.textContent = "camera is on ♡";
-      } catch (error) {
+      } catch {
         cameraStatus.textContent = "permission needed";
         cameraButton.textContent = "try camera again ♡";
+        cameraButton.disabled = false;
       }
     });
 
